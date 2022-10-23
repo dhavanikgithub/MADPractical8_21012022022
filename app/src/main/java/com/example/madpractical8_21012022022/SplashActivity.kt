@@ -3,12 +3,10 @@ package com.example.madpractical8_21012022022
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
-import android.os.Handler
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import java.util.*
 
 
 class SplashActivity : AppCompatActivity(){
@@ -35,7 +33,7 @@ class SplashActivity : AppCompatActivity(){
                     var intent = Intent(applicationContext,MainActivity::class.java)
 
                     startActivity(intent)
-                    overridePendingTransition(R.anim.sacle_in,R.anim.scale_out)
+                    overridePendingTransition(R.anim.scale_in,R.anim.scale_out)
                     finish()
                 }
 
