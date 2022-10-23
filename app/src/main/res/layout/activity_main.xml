@@ -6,12 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Practical 8"
+            app:titleTextColor="@color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +28,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:cardCornerRadius="8dp"
@@ -31,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_margin="10dp">
                     <ImageView
                         android:id="@+id/alaram_list"
                         android:layout_width="wrap_content"
@@ -66,34 +74,43 @@
                             android:layout_height="40dp"
                             android:layout_gravity="right" />
                     </LinearLayout>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
                         android:orientation="horizontal">
+
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/add_alaram"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:text="Create Alarm"
+                            android:text="Create\nAlarm"
+                            android:textSize="12dp"
                             android:textAllCaps="false"
+                            android:textStyle="bold"
                             app:cornerRadius="20dp"
                             app:icon="@drawable/ic_baseline_add_alarm_24"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/Cancel_alaram"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/Cancel_alaram"/>
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/Cancel_alaram"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:cornerRadius="20dp"
-                            android:text="Cancel Alarm"
-                            android:textAllCaps="false"
                             android:layout_marginStart="5dp"
+                            android:text="Cancel\nAlarm"
+                            android:textSize="12dp"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            app:cornerRadius="20dp"
                             app:icon="@drawable/ic_baseline_alarm_off_24"
-                            app:layout_constraintTop_toTopOf="@id/add_alaram"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/add_alaram"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintTop_toTopOf="@id/add_alaram" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 
-class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
+class SplashActivity : AppCompatActivity(){
     lateinit var logo_img: ImageView
     lateinit var logoframbyframanimation: AnimationDrawable
     lateinit var twinanimation: Animation
@@ -22,38 +22,34 @@ class SplashActivity : AppCompatActivity() , Animation.AnimationListener{
         logo_img.setBackgroundResource(R.drawable.uvpce_logo_list)
         logoframbyframanimation=logo_img.background as AnimationDrawable
         twinanimation= AnimationUtils.loadAnimation(this,R.anim.twin_animation)
-        twinanimation.setAnimationListener(this)
+
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if(hasFocus){
             logoframbyframanimation.start()
-            Timer().schedule(object : TimerTask() {
-                override fun run() {
-                    logo_img.startAnimation(twinanimation)
+            logo_img.startAnimation(twinanimation)
+            twinanimation.setAnimationListener(object :Animation.AnimationListener{
+                override fun onAnimationEnd(p0: Animation?) {
+                    var intent = Intent(applicationContext,MainActivity::class.java)
+
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.sacle_in,R.anim.scale_out)
+                    finish()
                 }
-            }, 3500)
+
+                override fun onAnimationRepeat(p0: Animation?) {
+
+                }
+
+                override fun onAnimationStart(p0: Animation?) {
+
+                }
+            })
         }
         else{
             logoframbyframanimation.stop()
         }
     }
-
-    override fun onAnimationStart(animation: Animation) {
-
-    }
-
-    override fun onAnimationEnd(animation: Animation) {
-        intent= Intent(this,MainActivity::class.java).apply{
-            overridePendingTransition(R.anim.sacle_in,R.anim.scale_out)
-            startActivity(this)
-            finish()
-        }
-    }
-
-    override fun onAnimationRepeat(animation: Animation) {
-
-    }
-
 }
